@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
 import { LinkContainer } from "react-router-bootstrap";
 
 function NavBar() {
@@ -25,13 +26,34 @@ function NavBar() {
   );
 }
 
+function Hero() {
+  return (
+    <Jumbotron fluid>
+      <Container>
+        <h1 className="display-4">
+          Welcome to <span>Maximus</span>!
+        </h1>
+        <p className="lead">A workout partner to kick your butt.</p>
+        <br />
+        <br />
+        <p>
+          <Button variant="primary" size="lg">
+            Get Started
+          </Button>
+          <Button className="ml-2" variant="outline-info" size="lg">
+            Learn more
+          </Button>
+        </p>
+      </Container>
+    </Jumbotron>
+  );
+}
+
 function Home() {
   return (
     <>
       <NavBar />
-      <p>
-        Go to <Link to="/about">About</Link> now!
-      </p>
+      <Hero />
     </>
   );
 }
