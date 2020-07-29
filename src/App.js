@@ -1,15 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Home, About } from "./pages";
+import { Home } from "./pages/Home";
+import { Workout } from "./pages/Workout";
+import { Dashboard } from "./pages/Dashboard";
 
 import "./App.css";
 
-function App() {
+export const App = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/about">
-          <About />
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/workout">
+          <Workout />
         </Route>
         <Route path="/">
           <Home />
@@ -17,6 +22,4 @@ function App() {
       </Switch>
     </Router>
   );
-}
-
-export { App };
+};

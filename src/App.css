@@ -1,4 +1,22 @@
-.header {
-  text-align: center;
+.mx-auto {
+  margin: 0 auto;
 }
 
+.mw-sm {
+  max-width: 500px !important;
+}
+
+.add-icon,
+.delete-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.add-icon:hover,
+.delete-icon:hover {
+  cursor: pointer;
+}
+
+.disabled-icon .add-icon:hover {
+  cursor: auto;
+}

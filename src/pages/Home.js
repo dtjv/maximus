@@ -1,14 +1,12 @@
 import React from "react";
-import { Hero, NavBar, Marketing } from "../components";
+import { NavBar } from "../components/NavBar";
+import { Marketing } from "../components/Marketing";
 
-function Home() {
+export const Home = () => {
   return (
     <>
       <NavBar />
-      <Hero />
       <Marketing />
     </>
   );
-}
-
-export { Home };
+};
