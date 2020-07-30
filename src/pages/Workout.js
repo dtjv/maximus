@@ -8,8 +8,7 @@ import RangeSlider from "react-bootstrap-range-slider";
 import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
-
-const data = ["squats", "push-ups", "pull-ups"];
+import { EXERCISE_LIBRARY } from "../utils/libs";
 
 const init = ({ exercises }) => {
   return exercises.map((exercise) => ({ id: uuid(), name: exercise, reps: 0 }));
@@ -18,7 +17,9 @@ const init = ({ exercises }) => {
 export const Workout = () => {
   const history = useHistory();
   const [newExercise, setNewExercise] = useState("");
-  const [exercises, setExercises] = useState(() => init({ exercises: data }));
+  const [exercises, setExercises] = useState(() =>
+    init({ exercises: EXERCISE_LIBRARY })
+  );
 
   const handleAddExercise = () => {
     setExercises([...exercises, { id: uuid(), name: newExercise, reps: 0 }]);
@@ -42,7 +43,7 @@ export const Workout = () => {
   };
 
   const handleReset = () => {
-    setExercises(init({ exercises: data }));
+    setExercises(init({ exercises: EXERCISE_LIBRARY }));
     setNewExercise("");
   };
 
