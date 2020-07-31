@@ -3,21 +3,18 @@ import moment from "moment";
 import { Random } from "random-js";
 
 export const EXERCISE_LIBRARY = [
-  "air squats",
-  "w.lunges",
-  "b.lunges",
+  "deadlifts",
+  "kettlebell swings",
+  "leg curls",
   "push-ups",
   "pull-ups",
-  "tuck-ups",
-  "deadlifts",
-  "rows",
-  "tricep ext",
-  "chin-ups",
+  "sit-ups",
   "split jumps",
-  "leg curls",
-  "kb swings",
-  "mtn climbers",
-].sort();
+  "squats",
+  "tuck-ups",
+  "walking lunges",
+];
+export const MAX_NUM_EXERCISES = 10;
 const random = new Random();
 const today = moment();
 
@@ -62,7 +59,7 @@ const uniqifyByExerciseName = (result, wod) => {
  * ]
  */
 const createExerciseList = () => {
-  const exercisesByName = new Array(random.integer(5, EXERCISE_LIBRARY.length))
+  const exercisesByName = new Array(random.integer(5, MAX_NUM_EXERCISES))
     .fill({})
     .map(createExercise)
     .reduce(uniqifyByExerciseName, {});
@@ -165,3 +162,17 @@ export const genLabels = (wods) =>
   wods.map((wod) => moment(wod.date).format("MM-DD-YY"));
 
 export const genDatasets = (wods) => createDatasets(wods);
+
+export const genRandomExerciseList = (max = 6) => {
+  const result = [];
+  let idx = 0;
+  const exercises = EXERCISE_LIBRARY.slice();
+
+  for (let i = 0; i < max; i += 1) {
+    idx = random.integer(0, exercises.length - 1);
+    result.push(exercises[idx]);
+    exercises.splice(idx, 1);
+  }
+
+  return result;
+};

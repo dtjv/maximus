@@ -13,7 +13,7 @@ export const NavBar = () => {
   return (
     <>
       <Navbar className="justify-content-between" bg="dark" variant="dark">
-        <Navbar.Brand href="/">Maximus!</Navbar.Brand>
+        <Navbar.Brand href="/">Maximus</Navbar.Brand>
         <Nav>
           <LinkContainer
             to="/dashboard"

@@ -64,7 +64,8 @@ export const Dashboard = () => {
             <h2>Workout Summary</h2>
             <p>
               Here's a list of your {data.labels.length} most recent workouts.
-              Click on a bar in the chart to see workout details.
+              Click on a bar in the chart to see workout details. Filter the
+              chart by toggling bars in the legend.
             </p>
             <div
               className="position-relative mt-4"

@@ -22,11 +22,16 @@ export const Home = () => {
               xs={12}
               md={6}
             >
-              <h1>Welcome to Maximus!</h1>
+              <h1>Welcome to Maximus</h1>
               <p className="lead">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim
+                Maximus is an ultra minimal workout tracker. Inspired during
+                COVID-19 and my lack of available strength equipment, I relied
+                on rep count as my progression and intensity gauge.
+              </p>
+              <p className="lead">
+                Easily add and remove exercises from your workout. Use the
+                sliders to to quickly record reps completed, save the workout
+                and head to the Dashboard.
               </p>
               <div>
                 <LinkContainer to="/workout">
@@ -50,9 +55,13 @@ export const Home = () => {
             >
               <h1>Visualize Workouts</h1>
               <p className="lead">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim
+                Maximus renders your last 30 workouts in rainbow of bars. Hover
+                over any bar for a snapshot of that day's workout details.
+              </p>
+              <p className="lead">
+                Out of the box, Maximus reports all exercises. To filter out an
+                exercise and simplify the chart, click on an exercise in the
+                legend and watch the chart dynamically update.
               </p>
               <div>
                 <LinkContainer to="/dashboard">

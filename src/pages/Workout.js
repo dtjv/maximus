@@ -9,7 +9,7 @@ import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
-import { EXERCISE_LIBRARY } from "../utils/libs";
+import { genRandomExerciseList, MAX_NUM_EXERCISES } from "../utils/libs";
 
 const init = ({ exercises }) => {
   return exercises.map((exercise) => ({ id: uuid(), name: exercise, reps: 0 }));
@@ -19,12 +19,18 @@ export const Workout = () => {
   const history = useHistory();
   const [newExercise, setNewExercise] = useState("");
   const [exercises, setExercises] = useState(() =>
-    init({ exercises: EXERCISE_LIBRARY })
+    init({ exercises: genRandomExerciseList() })
   );
 
+  const isListFull = () => exercises.length === MAX_NUM_EXERCISES;
+  const isNewExerciseEmpty = () =>
+    newExercise === "" || newExercise === undefined || newExercise === null;
+
   const handleAddExercise = () => {
-    setExercises([...exercises, { id: uuid(), name: newExercise, reps: 0 }]);
-    setNewExercise("");
+    if (!isListFull() && !isNewExerciseEmpty()) {
+      setExercises([{ id: uuid(), name: newExercise, reps: 0 }, ...exercises]);
+      setNewExercise("");
+    }
   };
 
   const handleRemoveExercise = (id) => {
@@ -44,7 +50,7 @@ export const Workout = () => {
   };
 
   const handleReset = () => {
-    setExercises(init({ exercises: EXERCISE_LIBRARY }));
+    setExercises(init({ exercises: genRandomExerciseList() }));
     setNewExercise("");
   };
 
@@ -67,8 +73,13 @@ export const Workout = () => {
                       <Form.Control
                         type="text"
                         value={newExercise}
-                        placeholder="Add a new exercise"
+                        placeholder={
+                          exercises.length === MAX_NUM_EXERCISES
+                            ? "Maximum number of exercises reached"
+                            : "Add a new exercise"
+                        }
                         onChange={({ target }) => setNewExercise(target.value)}
+                        disabled={exercises.length === MAX_NUM_EXERCISES}
                       />
                     </Form.Group>
                   </Col>
