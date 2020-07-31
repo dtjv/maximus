@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import { HorizontalBar } from "react-chartjs-2";
 import { NavBar } from "../components/NavBar";
+import { Footer } from "../components/Footer";
 import { genWods, genLabels, genDatasets } from "../utils/libs";
 
 const LIST_BASE_SIZE = 10;
@@ -55,14 +56,22 @@ export const Dashboard = () => {
       <NavBar />
       <div className="mx-auto">
         <Container>
-          <div
-            className="py-5 position-relative"
-            style={{ height: `${setCanvasHeight(data.labels.length)}px` }}
-          >
-            <HorizontalBar data={data} options={options} />
+          <div className="py-5">
+            <h2>Workout Summary</h2>
+            <p>
+              Here's a list of your {data.labels.length} most recent workouts.
+              Click on a bar in the chart to see workout details.
+            </p>
+            <div
+              className="position-relative mt-4"
+              style={{ height: `${setCanvasHeight(data.labels.length)}px` }}
+            >
+              <HorizontalBar data={data} options={options} />
+            </div>
           </div>
         </Container>
       </div>
+      <Footer />
     </>
   );
 };

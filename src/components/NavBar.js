@@ -1,16 +1,32 @@
 import React from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 import { LinkContainer } from "react-router-bootstrap";
+import { useLocation } from "react-router-dom";
 
 export const NavBar = () => {
+  const location = useLocation();
+  const setCursorOnActive = (path) =>
+    location.pathname === path ? { cursor: "default" } : { cursor: "pointer" };
+
   return (
     <>
       <Navbar className="justify-content-between" bg="dark" variant="dark">
-        <Navbar.Brand href="/home">Maximus!</Navbar.Brand>
+        <Navbar.Brand href="/">Maximus!</Navbar.Brand>
         <Nav>
-          <LinkContainer to="/dashboard">
+          <LinkContainer
+            to="/dashboard"
+            style={setCursorOnActive("/dashboard")}
+          >
             <Nav.Link>Dashboard</Nav.Link>
+          </LinkContainer>
+          <LinkContainer
+            to="/workout"
+            className="d-none d-md-block ml-2"
+            style={setCursorOnActive("/workout")}
+          >
+            <Button variant="outline-light">Start a Workout</Button>
           </LinkContainer>
         </Nav>
       </Navbar>
