@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
 import RangeSlider from "react-bootstrap-range-slider";
 import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
@@ -55,9 +55,9 @@ export const Workout = () => {
   return (
     <>
       <NavBar />
-      <div className="py-5 bg-steelblue--fade">
-        <div className="mx-auto mw-sm">
-          <Container className="rounded-lg bg-light shadow">
+      <div className="py-5 bg-fade">
+        <div className="mx-auto mw-500">
+          <Container className="rounded-lg bg-white shadow">
             <div className="py-4">
               <h2>New Workout</h2>
               <Form className="mt-4">
@@ -152,7 +152,7 @@ export const Workout = () => {
                     Reset
                   </Button>
                   <Button
-                    variant="outline-danger"
+                    variant="outline-primary"
                     className="ml-2"
                     onClick={handleCancel}
                   >

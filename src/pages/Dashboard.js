@@ -8,14 +8,15 @@ import { genWods, genLabels, genDatasets } from "../utils/libs";
 const LIST_BASE_SIZE = 10;
 const CANVAS_BASE_HEIGHT = 250;
 
-const wods = genWods(90);
+const wods = genWods(30);
 const data = {
   labels: genLabels(wods).reverse(),
   datasets: genDatasets(wods).reverse(),
 };
 const options = {
   legend: {
-    display: false,
+    display: true,
+    align: "start",
   },
   tooltips: {
     mode: "index",
@@ -36,6 +37,9 @@ const options = {
     yAxes: [
       {
         stacked: true,
+        gridLines: {
+          display: false,
+        },
       },
     ],
   },
@@ -54,7 +58,7 @@ export const Dashboard = () => {
   return (
     <>
       <NavBar />
-      <div className="mx-auto">
+      <div className="mx-auto bg-fade">
         <Container>
           <div className="py-5">
             <h2>Workout Summary</h2>

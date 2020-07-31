@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 function Footer() {
   return (
     <>
-      <div className="py-5 bg-dark text-white text-center">
+      <div className="py-3 bg-dark text-white text-center">
         <Container>
           <span>
             Made with{" "}

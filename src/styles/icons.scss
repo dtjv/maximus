@@ -1,0 +1,13 @@
+.add-icon,
+.delete-icon {
+  width: 2rem;
+  height: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.disabled-icon .add-icon:hover {
+  cursor: auto;
+}

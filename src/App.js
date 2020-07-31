@@ -4,7 +4,8 @@ import { Home } from "./pages/Home";
 import { Workout } from "./pages/Workout";
 import { Dashboard } from "./pages/Dashboard";
 
-import "./App.css";
+import "./App.scss";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 
 export const App = () => {
   return (

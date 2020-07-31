@@ -26,7 +26,7 @@ export const NavBar = () => {
             className="d-none d-md-block ml-2"
             style={setCursorOnActive("/workout")}
           >
-            <Button variant="outline-light">Start a Workout</Button>
+            <Button variant="outline-tertiary">Start a Workout</Button>
           </LinkContainer>
         </Nav>
       </Navbar>
