@@ -1,35 +1,58 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import moment from "moment";
+import { v4 as uuid } from "uuid";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import RangeSlider from "react-bootstrap-range-slider";
-import { v4 as uuid } from "uuid";
-import { useHistory } from "react-router-dom";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
-import { genRandomExerciseList, MAX_NUM_EXERCISES } from "../utils/libs";
+import { saveNewWod } from "../utils/db";
+import { makeRandomExerciseNameList, makeExerciseList } from "../utils/data";
 
-const init = ({ exercises }) => {
-  return exercises.map((exercise) => ({ id: uuid(), name: exercise, reps: 0 }));
-};
+const EXERCISE_LIMIT = 10;
+const EXERCISE_LIBRARY = [
+  "deadlifts",
+  "kettlebell swings",
+  "leg curls",
+  "push-ups",
+  "pull-ups",
+  "sit-ups",
+  "split jumps",
+  "squats",
+  "tuck-ups",
+  "walking lunges",
+];
+
+const init = () =>
+  makeExerciseList({
+    exerciseNames: makeRandomExerciseNameList({ names: EXERCISE_LIBRARY }),
+  });
 
 export const Workout = () => {
   const history = useHistory();
-  const [newExercise, setNewExercise] = useState("");
-  const [exercises, setExercises] = useState(() =>
-    init({ exercises: genRandomExerciseList() })
-  );
 
-  const isListFull = () => exercises.length === MAX_NUM_EXERCISES;
-  const isNewExerciseEmpty = () =>
-    newExercise === "" || newExercise === undefined || newExercise === null;
+  // state variables
+  const [exercises, setExercises] = useState(init);
+  const [newExerciseName, setNewExerciseName] = useState("");
 
+  // utility methods
+  const isNewExerciseNameEmpty = () => newExerciseName === "";
+  const isExerciseListFull = () => exercises.length === EXERCISE_LIMIT;
+
+  // event handlers
   const handleAddExercise = () => {
-    if (!isListFull() && !isNewExerciseEmpty()) {
-      setExercises([{ id: uuid(), name: newExercise, reps: 0 }, ...exercises]);
-      setNewExercise("");
+    if (!isExerciseListFull() && !isNewExerciseNameEmpty()) {
+      const newExercise = {
+        id: uuid(),
+        name: newExerciseName,
+        reps: 0,
+      };
+      setExercises([newExercise, ...exercises]);
+      setNewExerciseName("");
     }
   };
 
@@ -45,48 +68,65 @@ export const Workout = () => {
     );
   };
 
-  const handleSubmit = () => {
-    console.log(exercises, "<-- save exercises");
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const newWod = {
+      id: uuid(),
+      date: moment().format(),
+      exercises,
+    };
+
+    try {
+      await saveNewWod({ newWod });
+    } catch (error) {
+      console.error(error);
+    }
+
+    history.push("/dashboard");
   };
 
   const handleReset = () => {
-    setExercises(init({ exercises: genRandomExerciseList() }));
-    setNewExercise("");
+    setExercises(init());
+    setNewExerciseName("");
   };
 
   const handleCancel = () => {
     history.goBack();
   };
 
+  // TODO: break this up into smaller parts
   return (
     <>
       <NavBar />
-      <div className="py-5 bg-fade">
+      <div className="py-5 bg-fade min-vh-100">
         <div className="mx-auto mw-500">
           <Container className="rounded-lg bg-white shadow">
             <div className="py-4">
               <h2>New Workout</h2>
-              <Form className="mt-4">
+              <Form className="mt-4" onSubmit={handleSubmit}>
                 <Row className="mb-4">
                   <Col xs={10}>
                     <Form.Group className="mb-4">
                       <Form.Control
                         type="text"
-                        value={newExercise}
+                        value={newExerciseName}
                         placeholder={
-                          exercises.length === MAX_NUM_EXERCISES
+                          exercises.length === EXERCISE_LIMIT
                             ? "Maximum number of exercises reached"
                             : "Add a new exercise"
                         }
-                        onChange={({ target }) => setNewExercise(target.value)}
-                        disabled={exercises.length === MAX_NUM_EXERCISES}
+                        onChange={({ target }) =>
+                          setNewExerciseName(target.value)
+                        }
+                        disabled={exercises.length === EXERCISE_LIMIT}
                       />
                     </Form.Group>
                   </Col>
                   <Col className="d-flex justify-content-end">
                     <span
                       className={
-                        newExercise
+                        newExerciseName
                           ? "text-success"
                           : "text-muted disabled-icon"
                       }
@@ -152,7 +192,7 @@ export const Workout = () => {
                   );
                 })}
                 <div className="mt-4">
-                  <Button variant="primary" onClick={handleSubmit}>
+                  <Button variant="primary" type="submit">
                     Save
                   </Button>
                   <Button
