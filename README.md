@@ -1,8 +1,10 @@
 # Maximus
 
-**An ultra minimal workout tracker.**
+An ultra minimal workout tracker.
 
-![website image](./imgs/maximus.png)
+![website image](./media/maximus.png)
+
+<br>
 
 ## Features
 
@@ -14,5 +16,5 @@
 
 ## License
 
-MIT
+The source code is available under the [MIT license](LICENSE).
 

@@ -17,13 +17,20 @@ export const NavBar = () => {
         <Nav>
           <LinkContainer
             to="/dashboard"
+            className={
+              location.pathname === "/dashboard" ? "d-none" : "d-block"
+            }
             style={setCursorOnActive("/dashboard")}
           >
             <Nav.Link>Dashboard</Nav.Link>
           </LinkContainer>
           <LinkContainer
             to="/workout"
-            className="d-none d-md-block ml-2"
+            className={
+              location.pathname === "/workout"
+                ? "d-none"
+                : "d-none d-sm-block ml-2"
+            }
             style={setCursorOnActive("/workout")}
           >
             <Button variant="outline-tertiary">Start a Workout</Button>

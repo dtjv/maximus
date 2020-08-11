@@ -30,6 +30,7 @@ const EXERCISE_LIBRARY = [
 const init = () =>
   makeExerciseList({
     exerciseNames: makeRandomExerciseNameList({ names: EXERCISE_LIBRARY }),
+    reps: { min: 50, max: 50 },
   });
 
 export const Workout = () => {
@@ -49,7 +50,7 @@ export const Workout = () => {
       const newExercise = {
         id: uuid(),
         name: newExerciseName,
-        reps: 0,
+        reps: 50,
       };
       setExercises([newExercise, ...exercises]);
       setNewExerciseName("");
@@ -101,7 +102,7 @@ export const Workout = () => {
       <NavBar />
       <div className="py-5 bg-fade min-vh-100">
         <div className="mx-auto mw-500">
-          <Container className="rounded-lg bg-white shadow">
+          <Container className="rounded-lg bg-white shadow px-4 px-sm-5">
             <div className="py-4">
               <h2>New Workout</h2>
               <Form className="mt-4" onSubmit={handleSubmit}>

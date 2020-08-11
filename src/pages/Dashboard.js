@@ -46,7 +46,7 @@ export const Dashboard = () => {
         <Container>
           <div className="py-5">
             <div className="d-md-flex justify-content-md-between align-items-md-center">
-              <h2>Workout Summary</h2>
+              <h2>Dashboard</h2>
               <Button variant="primary" size="sm" onClick={toggleDataSource}>
                 {dataSource === DATA_SRC_REAL
                   ? "Show Fake Data"
