@@ -100,7 +100,7 @@ export const Workout = () => {
   return (
     <>
       <NavBar />
-      <div className="py-5 bg-fade min-vh-100">
+      <div className="py-5 bg-light min-vh-100">
         <div className="mx-auto mw-500">
           <Container className="rounded-lg bg-white shadow px-4 px-sm-5">
             <div className="py-4">
@@ -198,14 +198,14 @@ export const Workout = () => {
                   </Button>
                   <Button
                     variant="outline-dark"
-                    className="ml-2"
+                    className="ms-2"
                     onClick={handleReset}
                   >
                     Reset
                   </Button>
                   <Button
                     variant="outline-primary"
-                    className="ml-2"
+                    className="ms-2"
                     onClick={handleCancel}
                   >
                     Cancel

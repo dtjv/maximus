@@ -42,7 +42,7 @@ export const Dashboard = () => {
   return (
     <>
       <NavBar />
-      <div className="mx-auto bg-fade min-vh-100">
+      <div className="mx-auto bg-light min-vh-100">
         <Container>
           <div className="py-5">
             <div className="d-md-flex justify-content-md-between align-items-md-center">

@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
-    "bootstrap": "4.5.3",
+    "bootstrap": "5.0.0-beta1",
     "chart.js": "2.9.4",
     "localforage": "1.9.0",
     "moment": "2.29.1",
