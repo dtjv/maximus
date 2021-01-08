@@ -204,7 +204,7 @@ export const Workout = () => {
                     Reset
                   </Button>
                   <Button
-                    variant="outline-primary"
+                    variant="danger"
                     className="ms-2"
                     onClick={handleCancel}
                   >
