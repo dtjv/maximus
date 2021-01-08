@@ -1,6 +1,10 @@
 {
   "name": "maximus",
   "version": "0.1.0",
+  "engines":{
+    "node":">15",
+    "yarn":"~1.22.10"
+  },
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
