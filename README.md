@@ -1,12 +1,9 @@
-# [Maximus](maximus-dtjv.netlify.app)
+# [maximus](https://maximus-dtjv.netlify.app)
 
-An ultra minimal workout tracker.
+An ultra minimal workout tracker. (**[demo](https://maximus-dtjv.netlify.app)**)
 
 ![website image](./media/maximus.png)
 
-<br>
-
-https://maximus-dtjv.netlify.app
 
 ## Features
 
