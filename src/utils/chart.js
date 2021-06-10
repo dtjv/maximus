@@ -2,34 +2,33 @@ const BASE_LIST_SIZE = 10;
 const BASE_CHART_HEIGHT = 250;
 
 export const CHART_OPTIONS = {
-  legend: {
-    display: true,
-    align: "start",
-  },
-  tooltips: {
-    mode: "index",
-    intersect: false,
-    filter: (item) => parseInt(item.value, 10) > 0,
-  },
+  indexAxis: "y",
   responsive: true,
   maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      align: "start",
+    },
+    tooltips: {
+      mode: "index",
+      intersect: false,
+      filter: (item) => parseInt(item.value, 10) > 0,
+    },
+  },
   scales: {
-    xAxes: [
-      {
-        stacked: true,
-        ticks: {
-          min: 0,
-        },
+    x: {
+      stacked: true,
+      ticks: {
+        min: 0,
       },
-    ],
-    yAxes: [
-      {
-        stacked: true,
-        gridLines: {
-          display: false,
-        },
+    },
+    y: {
+      stacked: true,
+      gridLines: {
+        display: false,
       },
-    ],
+    },
   },
 };
 

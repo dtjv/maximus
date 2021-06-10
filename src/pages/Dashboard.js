@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
-import { HorizontalBar } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer";
 import { makeFakeWods } from "../utils/fake";
@@ -70,7 +70,7 @@ export const Dashboard = () => {
                     height: `${calculateCanvasHeight(data.labels.length)}px`,
                   }}
                 >
-                  <HorizontalBar data={data} options={CHART_OPTIONS} />
+                  <Bar data={data} options={CHART_OPTIONS} />
                 </div>
               </>
             )}
